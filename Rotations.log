@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  28 NOV 2015 21:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  28 NOV 2015 21:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -420,7 +420,7 @@ Package pdftex.def Info: Quaternion_Algebra.png used on input line 151.
 (pdftex.def)             Requested size: 42.63962pt x 39.17062pt.
  [2 <./Quaternion_Algebra.png>] [3] [4] [5]
 [6] [7]
-Overfull \hbox (3.84796pt too wide) in paragraph at lines 660--660
+Overfull \hbox (3.84796pt too wide) in paragraph at lines 661--661
 [] 
  []
 
@@ -459,7 +459,7 @@ al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr
 /usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local
 /texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2
 015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rotations.pdf (8 pages, 163950 bytes).
+Output written on Rotations.pdf (8 pages, 164004 bytes).
 PDF statistics:
  91 PDF objects out of 1000 (max. 8388607)
  64 compressed objects within 1 object stream
