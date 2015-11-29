@@ -406,7 +406,7 @@ q_u = \frac{q}{\| q \|}
 \end{center}
 
 \begin{proof}
-To check we just have to check that the norm of the new quaternion is actually equivalent to $1$:
+To check we just have to see that the norm of the new quaternion is actually equivalent to $1$:
 \begin{equation*}
 \begin{split}
 \| q_u \| &= \sqrt{q_uq_u^*} \\
@@ -563,10 +563,11 @@ Now if we want to check the norm of $p$ we have:
 \fbox{
 \begin{minipage}{7.3 in}
 \begin{proposition}[Rodrigues' Rotation Formula] 
-Given a vector $v \in \mathbb{R}^3$ and a unit vector,$\hat{k} \in \mathbb{R}^3$ describing an axis of rotation about which $v$ rotates by an angle $\theta$, according to the right hand rule the resulting vector after rotation is defined as:
+Given a vector $v \in \mathbb{R}^3$ and a unit vector $\hat{k} \in \mathbb{R}^3$ describing an axis of rotation about which $v$ rotates by an angle $\theta$, according to the right hand rule the resulting vector after rotation is defined as:
 \begin{equation*}
 v' = \cos(\theta)v + \sin(\theta)(\hat{k} \times v) + (1 - \cos(\theta))(\hat{k} \cdot v)\hat{k}
 \end{equation*}
+This result is known as Rodrigues' Rotation Formula.
 \end{proposition}
 \end{minipage}}
 \end{center}
