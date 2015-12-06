@@ -1,4 +1,4 @@
-<h1 align="center">Rotations & Quaternions</h1>
+<h1 align="center">Rotations & Euler Angles</h1>
 
 This document covers:
 - An introduction to Proper Euler Angles
