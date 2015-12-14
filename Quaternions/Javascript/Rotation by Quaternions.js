@@ -14,7 +14,7 @@ var dot_product = function(u,v) {
 
 var cross_product = function(u,v) {
 	var product = [
-		(u[1] * v[2]) - (u[2] - v[1]),
+		(u[1] * v[2]) - (u[2] * v[1]),
 		(u[2] * v[0]) - (u[0] * v[2]),
 		(u[0] * v[1]) - (u[1] * v[0])
 	];
@@ -22,19 +22,30 @@ var cross_product = function(u,v) {
 };
 
 var quaternion_multiplication = function(p,q) {
+	for(var i = 0; i < p.length; i++) {
+		p[i] = parseInt(p[i]);
+		q[i] = parseInt(q[i]);
+	}
 	var product = [],
+		p_knot = p[0],
+		q_knot = q[0],
 		p_vector = p.splice(0,1),
 		q_vector = q.splice(0,1);
-	product.push((p[0] * q[0]) - dot_product(p_vector,q_vector));
+	// console.log(p);
+	// console.log(q);
+	product.push((p_knot * q_knot) - dot_product(p_vector,q_vector));
 	for(var i = 0; i < p_vector.length; i++) {
-		p_vector[i] *= q[0];
-		q_vector[i] *= p[0];
+		p_vector[i] *= q_knot;
+		q_vector[i] *= p_knot;
 	}
 	var cross = cross_product(p_vector,q_vector);
+	console.log(cross);
 	var vector = [];
 	for(var i = 0; i < p_vector.length; i++) {
+		console.log(vector);
 		vector.push(p_vector[i] + q_vector[i] + cross[i]);
 	}
+	// console.log(vector);
 	product.concat(vector);
 	return product;
 };
@@ -90,10 +101,14 @@ var input = function() {
 	});
 };
 
-var obj = {
-	"alpha": 60,
-	"axis": [1,2,3],
-	"vector": [4,5,6]
-};
-normalize(obj);
-console.log(mapping(obj));
+// var obj = {
+// 	"alpha": 60,
+// 	"axis": [1,2,3],
+// 	"vector": [4,5,6]
+// };
+// normalize(obj);
+// console.log(mapping(obj));
+
+var u = [2,1,1,1],
+	v = [4,2,2,2];
+console.log(quaternion_multiplication(u,v));
