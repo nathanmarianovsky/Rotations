@@ -22,35 +22,21 @@ var cross_product = function(u,v) {
 };
 
 var quaternion_multiplication = function(p,q) {
-	// for(var i = 0; i < p.length; i++) {
-	// 	p[i] = parseInt(p[i]);
-	// 	q[i] = parseInt(q[i]);
-	// }
 	var product = [],
 		p_knot = p[0],
 		q_knot = q[0],
 		p_vector = p.splice(1),
 		q_vector = q.splice(1); 
-	// var tmp = (p_knot * q_knot);
-	// console.log(p_vector);
-	// console.log(q_vector);
-	// var	tmp2 = dot_product(p_vector,q_vector);
-	// console.log(tmp);
-	// console.log(tmp2);
 	product.push((p_knot * q_knot) - dot_product(p_vector,q_vector));
-	// console.log(product);
 	for(var i = 0; i < p_vector.length; i++) {
 		p_vector[i] *= q_knot;
 		q_vector[i] *= p_knot;
 	}
 	var cross = cross_product(p_vector,q_vector);
-	// console.log(cross);
 	var vector = [];
 	for(var i = 0; i < p_vector.length; i++) {
-		// console.log(vector);
 		vector.push(p_vector[i] + q_vector[i] + cross[i]);
 	}
-	// console.log(vector);
 	return product.concat(vector);
 };
 
@@ -77,12 +63,6 @@ var transform_type = function(obj) {
 };
 
 var mapping = function(obj) {
-	// console.log(parseInt(obj["alpha"]));
-	// console.log(Math.PI / 360);
-	// console.log(obj["axis"]);
-	// console.log(Math.sin(parseInt(obj["alpha"]) * (Math.PI / 360)));
-	// console.log(obj["axis"][0]);
-	// console.log(parseInt(obj["axis"][0]) * Math.sin(parseInt(obj["alpha"]) * (Math.PI / 360)));
 	var quaternion = [
 			Math.cos(parseInt(obj["alpha"]) * (Math.PI / 360)), 
 			obj["axis"][0] * Math.sin(obj["alpha"] * (Math.PI / 360)),
@@ -95,11 +75,7 @@ var mapping = function(obj) {
 			-obj["axis"][1] * Math.sin(obj["alpha"] * (Math.PI / 360)),
 			-obj["axis"][2] * Math.sin(obj["alpha"] * (Math.PI / 360))
 		];
-	console.log(obj);
-	console.log(quaternion);
-	console.log(quaternion_inverse);
 	var first_product = quaternion_multiplication(obj["vector"], quaternion_inverse);
-	console.log(first_product);
 	return quaternion_multiplication(quaternion, first_product);
 };
 
@@ -120,22 +96,14 @@ var input = function() {
 					"axis": axis,
 					"vector": [0].concat(vector)
 				};
+				transform_type(obj);
+				normalize(obj);
+				rl.write("The rotated vector is given by:\n");
+				console.log(mapping(obj).splice(1));
+				process.exit();
 			});
 		});
 	});
 };
 
-var obj = {
-	"alpha": 120,
-	"axis": [1,2,3],
-	"vector": [0,4,5,6]
-};
-transform_type(obj);
-normalize(obj);
-console.log(mapping(obj));
-
-// console.log(Math.cos(60 * (Math.PI / 360)));
-
-// var u = [2,1,1,1],
-// 	v = [7,2,2,3];
-// console.log(quaternion_multiplication(u,v));
+input();
