@@ -22,60 +22,84 @@ var cross_product = function(u,v) {
 };
 
 var quaternion_multiplication = function(p,q) {
-	for(var i = 0; i < p.length; i++) {
-		p[i] = parseInt(p[i]);
-		q[i] = parseInt(q[i]);
-	}
+	// for(var i = 0; i < p.length; i++) {
+	// 	p[i] = parseInt(p[i]);
+	// 	q[i] = parseInt(q[i]);
+	// }
 	var product = [],
 		p_knot = p[0],
 		q_knot = q[0],
-		p_vector = p.splice(0,1),
-		q_vector = q.splice(0,1);
-	// console.log(p);
-	// console.log(q);
+		p_vector = p.splice(1),
+		q_vector = q.splice(1); 
+	// var tmp = (p_knot * q_knot);
+	// console.log(p_vector);
+	// console.log(q_vector);
+	// var	tmp2 = dot_product(p_vector,q_vector);
+	// console.log(tmp);
+	// console.log(tmp2);
 	product.push((p_knot * q_knot) - dot_product(p_vector,q_vector));
+	// console.log(product);
 	for(var i = 0; i < p_vector.length; i++) {
 		p_vector[i] *= q_knot;
 		q_vector[i] *= p_knot;
 	}
 	var cross = cross_product(p_vector,q_vector);
-	console.log(cross);
+	// console.log(cross);
 	var vector = [];
 	for(var i = 0; i < p_vector.length; i++) {
-		console.log(vector);
+		// console.log(vector);
 		vector.push(p_vector[i] + q_vector[i] + cross[i]);
 	}
 	// console.log(vector);
-	product.concat(vector);
-	return product;
+	return product.concat(vector);
 };
 
 var normalize = function(obj) {
 	var norm_squared = 0;
 	for(var i = 0; i < obj["axis"].length; i++) {
-		norm_squared += Math.pow(parseInt(obj["axis"][i]),2);
+		norm_squared += Math.pow(obj["axis"][i],2);
 	}
 	for(var j = 0; j < obj["axis"].length; j++) {
-		obj["axis"][j] = parseInt(obj["axis"][j]) / Math.sqrt(norm_squared);
+		obj["axis"][j] = obj["axis"][j] / Math.sqrt(norm_squared);
+	}
+	return obj;
+};
+
+var transform_type = function(obj) {
+	obj["alpha"] = parseInt(obj["alpha"]);
+	for(var i = 0; i < obj["axis"].length; i++) {
+		obj["axis"][i] = parseInt(obj["axis"][i]);
+	}
+	for(var j = 0; j < obj["vector"].length; j++) {
+		obj["vector"][j] = parseInt(obj["vector"][j]);
 	}
 	return obj;
 };
 
 var mapping = function(obj) {
-	var angle = parseInt(obj["alpha"]) * (Math.PI / 180),
-		quaternion = [
-			Math.cos(angle / 2), 
-			parseInt(obj["axis"][0]) * Math.sin(angle / 2),
-			parseInt(obj["axis"][1]) * Math.sin(angle / 2),
-			parseInt(obj["axis"][2]) * Math.sin(angle / 2)
+	// console.log(parseInt(obj["alpha"]));
+	// console.log(Math.PI / 360);
+	// console.log(obj["axis"]);
+	// console.log(Math.sin(parseInt(obj["alpha"]) * (Math.PI / 360)));
+	// console.log(obj["axis"][0]);
+	// console.log(parseInt(obj["axis"][0]) * Math.sin(parseInt(obj["alpha"]) * (Math.PI / 360)));
+	var quaternion = [
+			Math.cos(parseInt(obj["alpha"]) * (Math.PI / 360)), 
+			obj["axis"][0] * Math.sin(obj["alpha"] * (Math.PI / 360)),
+			obj["axis"][1] * Math.sin(obj["alpha"] * (Math.PI / 360)),
+			obj["axis"][2] * Math.sin(obj["alpha"] * (Math.PI / 360))
 		],
 		quaternion_inverse = [
-			Math.cos(angle / 2), 
-			-parseInt(obj["axis"][0]) * Math.sin(angle / 2),
-			-parseInt(obj["axis"][1]) * Math.sin(angle / 2),
-			-parseInt(obj["axis"][2]) * Math.sin(angle / 2)
+			Math.cos(parseInt(obj["alpha"]) * (Math.PI / 360)), 
+			-obj["axis"][0] * Math.sin(obj["alpha"] * (Math.PI / 360)),
+			-obj["axis"][1] * Math.sin(obj["alpha"] * (Math.PI / 360)),
+			-obj["axis"][2] * Math.sin(obj["alpha"] * (Math.PI / 360))
 		];
+	console.log(obj);
+	console.log(quaternion);
+	console.log(quaternion_inverse);
 	var first_product = quaternion_multiplication(obj["vector"], quaternion_inverse);
+	console.log(first_product);
 	return quaternion_multiplication(quaternion, first_product);
 };
 
@@ -101,14 +125,17 @@ var input = function() {
 	});
 };
 
-// var obj = {
-// 	"alpha": 60,
-// 	"axis": [1,2,3],
-// 	"vector": [4,5,6]
-// };
-// normalize(obj);
-// console.log(mapping(obj));
+var obj = {
+	"alpha": 120,
+	"axis": [1,2,3],
+	"vector": [0,4,5,6]
+};
+transform_type(obj);
+normalize(obj);
+console.log(mapping(obj));
 
-var u = [2,1,1,1],
-	v = [4,2,2,2];
-console.log(quaternion_multiplication(u,v));
+// console.log(Math.cos(60 * (Math.PI / 360)));
+
+// var u = [2,1,1,1],
+// 	v = [7,2,2,3];
+// console.log(quaternion_multiplication(u,v));
