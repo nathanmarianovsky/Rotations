@@ -66,7 +66,7 @@ exports.transform_type = function(obj) {
 };
 
 
-// The quaternion rotation mapping which return the rotated vector
+// Performs the quaternion rotation mapping which returns the rotated vector
 exports.mapping = function(obj) {
 	var quaternion = [
 			Math.cos(parseInt(obj["alpha"]) * (Math.PI / 360)), 
