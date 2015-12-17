@@ -6,6 +6,18 @@ var readline = require("readline"),
 		output: process.stdout
 	});
 
+// Transforms all inputs to numbers
+var transform_type = function(obj) {
+	obj["alpha"] = parseInt(obj["alpha"]);
+	for(var i = 0; i < obj["axis"].length; i++) {
+		obj["axis"][i] = parseInt(obj["axis"][i]);
+	}
+	for(var j = 0; j < obj["vector"].length; j++) {
+		obj["vector"][j] = parseInt(obj["vector"][j]);
+	}
+	return obj;
+};
+
 // var reading_angle = function() {
 // 	rl.question("Angle (alpha): ", function(answer) {
 // 		if(!isNaN(answer) && answer != "") {
@@ -67,10 +79,11 @@ var quaternion_map = function() {
 				var obj = {
 					"alpha": alpha,
 					"axis": axis,
-					"vector": [0].concat(vector)
+					"vector": vector
 				};
-				quaternions.transform_type(obj);
+				transform_type(obj);
 				quaternions.normalize(obj);
+				// console.log(obj);
 				rl.write("The rotated vector is given by:\n");
 				console.log(quaternions.mapping(obj).splice(1));
 				process.exit();
@@ -95,10 +108,10 @@ var matrix_map = function() {
 					"axis": axis,
 					"vector": vector
 				};
-				quaternions.transform_type(obj);
+				transform_type(obj);
 				var normalized_axis = matrix_rotation.normalize(obj["axis"]);
 				var matrix = matrix_rotation.matrix(normalized_axis, obj["alpha"]);
-				console.log(matrix);
+				// console.log(matrix);
 				rl.write("The rotated vector is given by:\n");
 				console.log(matrix_rotation.mapping(matrix, obj["vector"]));
 				process.exit();

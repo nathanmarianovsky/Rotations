@@ -27,14 +27,14 @@ exports.quaternion_multiplication = function(p,q) {
 		p_vector = p.splice(1),
 		q_vector = q.splice(1); 
 	product.push((p_knot * q_knot) - exports.dot_product(p_vector,q_vector));
+	// for(var i = 0; i < p_vector.length; i++) {
+	// 	p_vector[i] *= q_knot;
+	// 	q_vector[i] *= p_knot;
+	// }
+	var cross = exports.cross_product(p_vector,q_vector),
+		vector = [];
 	for(var i = 0; i < p_vector.length; i++) {
-		p_vector[i] *= q_knot;
-		q_vector[i] *= p_knot;
-	}
-	var cross = exports.cross_product(p_vector,q_vector);
-	var vector = [];
-	for(var i = 0; i < p_vector.length; i++) {
-		vector.push(p_vector[i] + q_vector[i] + cross[i]);
+		vector.push((q_knot * p_vector[i]) + (p_knot * q_vector[i]) + cross[i]);
 	}
 	return product.concat(vector);
 };
@@ -46,21 +46,10 @@ exports.normalize = function(obj) {
 	for(var i = 0; i < obj["axis"].length; i++) {
 		norm_squared += Math.pow(obj["axis"][i],2);
 	}
-	for(var j = 0; j < obj["axis"].length; j++) {
-		obj["axis"][j] = obj["axis"][j] / Math.sqrt(norm_squared);
-	}
-	return obj;
-};
-
-
-// Transforms all inputs to numbers
-exports.transform_type = function(obj) {
-	obj["alpha"] = parseInt(obj["alpha"]);
-	for(var i = 0; i < obj["axis"].length; i++) {
-		obj["axis"][i] = parseInt(obj["axis"][i]);
-	}
-	for(var j = 0; j < obj["vector"].length; j++) {
-		obj["vector"][j] = parseInt(obj["vector"][j]);
+	if(norm_squared != 1) {
+		for(var j = 0; j < obj["axis"].length; j++) {
+			obj["axis"][j] = obj["axis"][j] / Math.sqrt(norm_squared);
+		}
 	}
 	return obj;
 };
@@ -68,18 +57,33 @@ exports.transform_type = function(obj) {
 
 // Performs the quaternion rotation mapping which returns the rotated vector
 exports.mapping = function(obj) {
+	var angle = obj["alpha"] * (Math.PI / 180);
+	var vec = [];
+	// console.log(obj);
+	vec.push(0);
+	for(var i = 0; i < obj["vector"].length; i++) {
+		vec.push(obj["vector"][i]);
+		// console.log(vec);
+	}
 	var quaternion = [
-			Math.cos(parseInt(obj["alpha"]) * (Math.PI / 360)), 
-			obj["axis"][0] * Math.sin(obj["alpha"] * (Math.PI / 360)),
-			obj["axis"][1] * Math.sin(obj["alpha"] * (Math.PI / 360)),
-			obj["axis"][2] * Math.sin(obj["alpha"] * (Math.PI / 360))
-		],
-		quaternion_inverse = [
-			Math.cos(parseInt(obj["alpha"]) * (Math.PI / 360)), 
-			-obj["axis"][0] * Math.sin(obj["alpha"] * (Math.PI / 360)),
-			-obj["axis"][1] * Math.sin(obj["alpha"] * (Math.PI / 360)),
-			-obj["axis"][2] * Math.sin(obj["alpha"] * (Math.PI / 360))
+			Math.cos(angle / 2), 
+			obj["axis"][0] * Math.sin(angle / 2),
+			obj["axis"][1] * Math.sin(angle / 2),
+			obj["axis"][2] * Math.sin(angle / 2)
 		];
-	var first_product = exports.quaternion_multiplication(obj["vector"], quaternion_inverse);
-	return exports.quaternion_multiplication(quaternion, first_product);
+	var	quaternion_inverse = [
+			Math.cos(angle / 2), 
+			-obj["axis"][0] * Math.sin(angle / 2),
+			-obj["axis"][1] * Math.sin(angle / 2),
+			-obj["axis"][2] * Math.sin(angle / 2)
+		];
+	// console.log(quaternion);
+	// console.log(vec);
+	var	first_product = exports.quaternion_multiplication(quaternion, vec);
+		// console.log(quaternion);
+		// console.log(vec);
+		console.log(first_product, quaternion_inverse);
+	// console.log(obj);
+	// console.log(first_product);
+	return exports.quaternion_multiplication(first_product, quaternion_inverse);
 };
