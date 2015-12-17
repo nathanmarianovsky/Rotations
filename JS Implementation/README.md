@@ -11,3 +11,5 @@ Before running you need to download Node.js. After that run the following in the
 ```js
 node script.js
 ```
+
+and follow the directions.
