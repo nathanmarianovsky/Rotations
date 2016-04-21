@@ -1,5 +1,8 @@
+var exports = {},
+	math = require("mathjs");
+
 // Creates the matrix of rotation about an axis with some angle where each array in the matrix array represents a row vector
-exports.matrix = function(axis_arr, angle) {
+exports.matrix = (axis_arr, angle) => {
 	var alpha = angle * (Math.PI / 180);
 	var matrix = [
 		[
@@ -21,31 +24,12 @@ exports.matrix = function(axis_arr, angle) {
 	return matrix;
 };
 
-
 // Normalizes the given axis of rotation
-exports.normalize = function(axis_arr) {
-	var norm_squared = 0;
-	for(var i = 0; i < axis_arr.length; i++) {
-		norm_squared += Math.pow(axis_arr[i],2);
-	}
-	if(norm_squared != 1) {
-		for(var j = 0; j < axis_arr.length; j++) {
-			axis_arr[j] = axis_arr[j] / Math.sqrt(norm_squared);
-		}
-	}
-	return axis_arr;
+exports.normalize = axis => {
+	var norm_squared = axis.reduce((left, right) => left + math.pow(right, 2));
+	if(norm_squared != 1) { axis = axis.map(elem => elem / math.sqrt(norm_squared)); }
+	return axis;
 };
-
 
 // Performs the matrix rotation mapping which returns the rotated vector
-exports.mapping = function(matrix, vector) {
-	var result = [];
-	for(var i = 0; i < matrix.length; i++) {
-		var sum = 0;
-		for(var j = 0; j < matrix[i].length; j++) {
-			sum += matrix[i][j] * vector[j];
-		}
-		result.push(sum);
-	}
-	return result;
-};
+exports.mapping = (matrix, vector) => { return math.multiply(matrix, vector).map(elem => elem.toFixed(6)); };
