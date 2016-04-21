@@ -1,5 +1,6 @@
 var exports = {},
-	math = require("mathjs");
+	math = require("mathjs"),
+	normalize = require("./normalize");
 
 // Creates the matrix of rotation about an axis with some angle where each array in the matrix array represents a row vector
 exports.matrix = (axis_arr, angle) => {
@@ -24,12 +25,7 @@ exports.matrix = (axis_arr, angle) => {
 	return matrix;
 };
 
-// Normalizes the given axis of rotation
-exports.normalize = axis => {
-	var norm_squared = axis.reduce((left, right) => left + math.pow(right, 2));
-	if(norm_squared != 1) { axis = axis.map(elem => elem / math.sqrt(norm_squared)); }
-	return axis;
-};
-
 // Performs the matrix rotation mapping which returns the rotated vector
 exports.mapping = (matrix, vector) => { return math.multiply(matrix, vector).map(elem => elem.toFixed(6)); };
+
+module.exports = exports;
