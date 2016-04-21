@@ -1,0 +1,15 @@
+{
+  "name": "web_app",
+  "version": "1.0.0",
+  "description": "<h1 align=\"center\">JS Implementation of Rotations</h1>",
+  "main": "Quaternions.js",
+  "dependencies": {
+    "mathjs": "^3.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
