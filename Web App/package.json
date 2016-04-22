@@ -4,6 +4,7 @@
   "description": "<h1 align=\"center\">JS Implementation of Rotations</h1>",
   "main": "Quaternions.js",
   "dependencies": {
+    "express": "^4.13.4",
     "mathjs": "^3.2.0"
   },
   "devDependencies": {},

@@ -3,7 +3,7 @@ var exports = {},
 	normalize = require("./normalize");
 
 // Creates the matrix of rotation about an axis with some angle where each array in the matrix array represents a row vector
-exports.matrix = (axis_arr, angle) => {
+exports.matrix_creation = (axis_arr, angle) => {
 	var alpha = angle * (Math.PI / 180);
 	var matrix = [
 		[
@@ -26,6 +26,9 @@ exports.matrix = (axis_arr, angle) => {
 };
 
 // Performs the matrix rotation mapping which returns the rotated vector
-exports.mapping = (matrix, vector) => { return math.multiply(matrix, vector).map(elem => elem.toFixed(6)); };
+exports.mapping = (alpha, axis, vector) => { 
+	var matrix = exports.matrix_creation(axis, alpha);
+	return math.multiply(matrix, vector).map(elem => elem.toFixed(6)); 
+};
 
 module.exports = exports;

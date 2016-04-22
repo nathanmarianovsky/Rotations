@@ -47,6 +47,3 @@ exports.mapping = (alpha, axis, vector) => {
 };
 
 module.exports = exports;
-
-
-console.log(exports.mapping(90, [0,0,1], [1,0,0]));
