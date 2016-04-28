@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="author" content="Nathan Marianovsky">
+		<meta name="application-name" content="JS Implementation of Rotations">
+		<meta name="description" content="Rotates a Vector in 3 Space Given an Angle and Axis">
+		<title>JS Implementation of Vector Rotations</title>
+		<script data-main="/scripts/js/config" type="text/javascript" async src="/node_modules/requirejs/require.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+		<link rel="stylesheet" type="text/css" href="/styles/styles.css">
+	</head>
+	<body>
+		<header>
+			<nav>
+			    <div class="nav-wrapper center">JS Implementation of Vector Rotation</div>
+			</nav>
+		</header>
+		<main>
+			<div id="angle-form">
+				<div class="row">
+				    <form class="col s12">
+					    <div class="row">
+					    	<h4 class="center">Angle of Rotation</h3>
+					        <div class="input-field col s6">
+					          	<input id="angle-value" type="number" class="validate">
+					          	<label for="angle-value">Angle Value</label>
+					        </div>
+					        <div class="input-field col s6">
+							    <select>
+							      	<option value="1" selected>Degrees</option>
+							      	<option value="2">Radians</option>
+							    </select>
+							</div>
+					    </div>
+				    </form>
+			  	</div>
+			</div>
+			<br>
+			<div id="axis-form">
+				<div class="row">
+				    <form class="col s12">
+					    <div class="row">
+					    	<h4 class="center">Axis of Rotation</h3>
+					        <div class="input-field col s12">
+					          	<input id="axis-x" type="number" class="validate">
+					          	<label for="axis-x">X Coordinate</label>
+					        </div>
+					    </div>
+					    <div class="row">
+					        <div class="input-field col s12">
+					          	<input id="axis-y" type="number" class="validate">
+					          	<label for="axis-y">Y Coordinate</label>
+					        </div>
+					    </div>
+					    <div class="row">
+					        <div class="input-field col s12">
+					          	<input id="axis-z" type="number" class="validate">
+					          	<label for="axis-z">Z Coordinate</label>
+					        </div>
+					    </div>
+				    </form>
+			  	</div>
+			</div>
+			<div id="vector-form">
+				<div class="row">
+				    <form class="col s12">
+					    <div class="row">
+					    	<h4 class="center">Vector</h3>
+					        <div class="input-field col s12">
+					          	<input id="vector-x" type="number" class="validate">
+					          	<label for="vector-x">X Coordinate</label>
+					        </div>
+					    </div>
+					    <div class="row">
+					        <div class="input-field col s12">
+					          	<input id="vector-y" type="number" class="validate">
+					          	<label for="vector-y">Y Coordinate</label>
+					        </div>
+					    </div>
+					    <div class="row">
+					        <div class="input-field col s12">
+					          	<input id="vector-z" type="number" class="validate">
+					          	<label for="vector-z">Z Coordinate</label>
+					        </div>
+					    </div>
+				    </form>
+			  	</div>
+			</div>
+		</main>
+	</body>
+</html>

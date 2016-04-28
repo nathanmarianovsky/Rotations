@@ -8,7 +8,11 @@ var express = require("express"),
 app.use(express.static(__dirname));
 
 // Adds all of the routes
-routes.add_routes(app);
+// routes.add_routes(app);
+
+app.get("/*", (request, response) => {
+	response.sendFile("./client/template.html", { "root": "./" });
+});
 
 // Tells the app to listen
 app.listen(80, () => {
