@@ -1,11 +1,13 @@
-.nav-wrapper {
-	font-size: 20px;
-}
-
+/*------------------------------- All Styles Pertaining to the Navigation Bar -------------------------------*/
 nav {
 	background-color: #3C7113;
 }
 
+.nav-wrapper {
+	font-size: 25px;
+}
+
+/*------------------------------- All Styles Pertaining to the Grid -------------------------------*/
 body {
 	background-color: #AAA039;
 }
@@ -14,40 +16,52 @@ main {
 	color: white;
 }
 
+main select option {
+	color: black;
+}
+
+button {
+	color: black;
+	border-bottom: none;
+	box-shadow: none;
+}
+
 h4 {
 	color: white;
 }
 
-#angle-form {
-	width: 98%;
-	margin: 50px auto 0 auto;
-	border: 1.5px solid white;
-	border-radius: 50px;
-	padding: 30px;
+.grid-item {
 	background-color: #214B00;
+	width: 30%;
+	margin: 25px;
+	border-radius: 10px;
 }
 
-#axis-form {
-	width: 45%;
-	margin: 0 0 0 10px;
-	border: 1.5px solid white;
-	border-radius: 50px;
-	padding: 30px;
-	background-color: #214B00;
-	display: inline-block;
+.grid-sizer {
+	width: 20px;
 }
 
-#vector-form {
-	width: 45%;
+.grid-item {
+	width: 30%;
+}
+
+#intro {
+    padding: 40px;
+}
+
+#intro-box {
+	width: 80%;
+	margin: 15px auto 15px auto;
+	position: relative !important;
+}
+
+#intro-title {
+	margin-top: 10px;
+	padding-top: 20px;
+	margin-bottom: -20px;
+}
+
+#click_statement {
 	position: relative;
-	left: 102px;
-	border: 1.5px solid white;
-	border-radius: 50px;
-	padding: 30px;
-	background-color: #214B00;
-	display: inline-block;
-}
-
-main select option {
-	color: black;
+	bottom: 20px;
 }
