@@ -6,6 +6,7 @@
   "dependencies": {
     "express": "^4.13.4",
     "jquery": "^2.2.3",
+    "masonry-layout": "^4.1.0",
     "mathjs": "^3.2.0",
     "requirejs": "^2.2.0"
   },

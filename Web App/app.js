@@ -4,15 +4,10 @@ var express = require("express"),
 	app = express();
 
 // Tells the app to use the current directory as the default path
-// app.use(express.static(__dirname, {"maxAge": 864000000 }));
 app.use(express.static(__dirname));
 
 // Adds all of the routes
-// routes.add_routes(app);
-
-app.get("/*", (request, response) => {
-	response.sendFile("./client/template.html", { "root": "./" });
-});
+routes.add_routes(app);
 
 // Tells the app to listen
 app.listen(80, () => {
