@@ -5,6 +5,10 @@
 		display: none;
 	}
 
+	nav ul li:hover, nav ul li.active {
+		background-color: initial;
+	}
+
 	h4 {
 		color: white;
 		font-size: 15px;
