@@ -19,13 +19,19 @@ exports.add_routes = app => {
 	app.get("/:first/:second/:third", (request, response) => { response.redirect("/"); });
 
 	// Any such url will redirect to the default
-	app.get("/:first/:second/:third/:fourth/*", (request, response) => { response.redirect("/"); });
+	app.get("/:first/:second/:third/:fourth/:fifth", (request, response) => { 
+		request.params.first == "rotation" ? response.sendFile("./client/template.html", { "root": "./" }) : response.redirect("/");
+		// response.redirect("/"); 
+	});
+
+	// Any such url will redirect to the default
+	app.get("/:first/:second/:third/:fourth/:fifth/*", (request, response) => { response.redirect("/"); });
 
 	// All routes for computation
 	app.get("/:method/:angle/:axis/:vector", (request, response) => {
 		var angle = request.params.angle,
-			axis = (request.params.axis.split("-")),
-			vector = (request.params.vector.split("-")),
+			axis = request.params.axis.split("-"),
+			vector = request.params.vector.split("-"),
 			method = request.params.method;
 		if(!axis.some(elem => Number(elem) != elem || elem === "") && !vector.some(elem => Number(elem) != elem || elem === "") && Number(angle) == angle) {
 			if(axis.length === 3 && vector.length === 3) {
