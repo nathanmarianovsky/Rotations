@@ -15,33 +15,49 @@
 	}
 
 	#first {
-		/*background-color: #214B00;*/
-		width: 80%;
-		/*margin: 20px;*/
-		position: relative !important;
 		margin: 10px auto -20px auto;
-		/*border-radius: 10px;*/
-		font-size: 10px;
 	}
 
 	#second {
-		/*bottom: 10px;*/
+		top: 15px !important;
+	}
+
+	#third {
+		top: 30px !important;
+	}
+
+	#fourth {
+		top: 45px !important;
+	}
+
+	#fifth {
+		top: 60px !important;
+	}
+
+	#first-input {
+		top: 15px !important;
+	}
+
+	#second-input {
+		top: 30px !important;
+	}
+
+	#third-input {
+		top: 45px !important;
+	}
+
+	#fourth-input {
+		top: 60px !important;
 	}
 
 	.grid-item {
-		/*background-color: #214B00;*/
 		width: 80%;
-		/*margin: 20px;*/
 		position: relative !important;
 		margin: -20px auto -20px auto;
-		/*border-radius: 10px;*/
 		font-size: 10px;
-		/*top: 150px !important;*/
 	}
 
 	#intro-box {
-		/*width: 80%;*/
 		margin: 0 auto 0 auto;
-		/*position: relative !important;*/
 	}
 }
