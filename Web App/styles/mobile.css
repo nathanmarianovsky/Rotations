@@ -1,0 +1,47 @@
+/*------------------------------- All Styles Pertaining to Mobile Devices -------------------------------*/
+@media only screen and (max-width: 991px) {
+	.nav-wrapper .brand-logo {
+		font-size: 15px;
+		display: none;
+	}
+
+	h4 {
+		color: white;
+		font-size: 15px;
+	}
+
+	.grid-sizer {
+		width: 0px;
+	}
+
+	#first {
+		/*background-color: #214B00;*/
+		width: 80%;
+		/*margin: 20px;*/
+		position: relative !important;
+		margin: 10px auto -20px auto;
+		/*border-radius: 10px;*/
+		font-size: 10px;
+	}
+
+	#second {
+		/*bottom: 10px;*/
+	}
+
+	.grid-item {
+		/*background-color: #214B00;*/
+		width: 80%;
+		/*margin: 20px;*/
+		position: relative !important;
+		margin: -20px auto -20px auto;
+		/*border-radius: 10px;*/
+		font-size: 10px;
+		/*top: 150px !important;*/
+	}
+
+	#intro-box {
+		/*width: 80%;*/
+		margin: 0 auto 0 auto;
+		/*position: relative !important;*/
+	}
+}
