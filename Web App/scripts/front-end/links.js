@@ -1,4 +1,4 @@
-define(["jquery", "router5"], ($, router5) => {
+define(["jquery"], $ => {
 	var exports = {};
 
 	exports.check_input = input => { return Number(input) == input && input !== ""; };

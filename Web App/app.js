@@ -1,6 +1,6 @@
 // Define the necessary components
 var express = require("express"),
-	routes = require("./scripts/js/routes"),
+	routes = require("./scripts/back-end/routes"),
 	app = express();
 
 // Tells the app to use the current directory as the default path
