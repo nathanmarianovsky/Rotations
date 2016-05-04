@@ -66,3 +66,11 @@ h4 {
 	position: relative;
 	bottom: 20px;
 }
+
+.latex_equation {
+	position: relative;
+	text-align: center;
+	/*font-family: "Georgia";*/
+	padding: 20px 0 20px 0;
+	font-size: 15px;
+}
