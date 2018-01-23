@@ -1,20 +1,12 @@
 {
-  "name": "web_app",
+  "name": "JS Implementation",
   "version": "1.0.0",
   "description": "<h1 align=\"center\">JS Implementation of Rotations</h1>",
   "main": "Quaternions.js",
   "dependencies": {
-    "express": "^4.13.4",
-    "jquery": "^2.2.3",
-    "masonry-layout": "^4.1.0",
-    "mathjs": "^3.2.0",
-    "requirejs": "^2.2.0",
-    "router5": "^0.6.4"
+    "mathjs": "^3.2.0"
   },
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-install": "^0.6.0"
-  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
