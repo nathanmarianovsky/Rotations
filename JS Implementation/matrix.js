@@ -1,10 +1,11 @@
 var exports = {},
 	math = require("mathjs"),
-	normalize = require("./normalize");
+	normal = require("./normalize");
 
 // Creates the matrix of rotation about an axis with some angle where each array in the matrix array represents a row vector
 exports.matrix_creation = (axis_arr, angle) => {
 	var alpha = angle * (Math.PI / 180);
+	axis_arr = normal.normalize(axis_arr);
 	var matrix = [
 		[
 			(Math.cos(alpha) * (1 - Math.pow(axis_arr[0],2))) + Math.pow(axis_arr[0],2),

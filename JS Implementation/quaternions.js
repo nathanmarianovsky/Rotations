@@ -1,9 +1,9 @@
 var exports = {},
 	math = require("mathjs"),
-	normalize = require("./normalize");
+	normal = require("./normalize");
 
 // Computes the product of two quaternions using the cross and dot products
-exports.quaternion_multiplication = (p,q) => {
+exports.quaternion_multiplication = (p, q) => {
 	var product = [],
 		vector = [],
 		p_knot = p[0],
@@ -16,18 +16,12 @@ exports.quaternion_multiplication = (p,q) => {
 	return product.concat(vector);
 };
 
-// Normalizes the given axis of rotation
-exports.normalize = axis => {
-	var norm_squared = axis.reduce((left, right) => left + math.pow(right, 2));
-	if(norm_squared != 1) { axis = axis.map(elem => elem / math.sqrt(norm_squared)); }
-	return axis;
-};
-
 // Performs the quaternion rotation mapping which returns the rotated vector
 exports.mapping = (alpha, axis, vector) => {
 	var first_product = [],
 		angle = alpha * (Math.PI / 180),
 		vec = [];
+	axis = normal.normalize(axis);
 	vec.push(0);
 	vec = vec.concat(vector);
 	var quaternion = [
