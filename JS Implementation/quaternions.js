@@ -37,7 +37,7 @@ exports.mapping = (alpha, axis, vector) => {
 			-axis[2] * math.sin(angle / 2)
 		];
 	first_product = exports.quaternion_multiplication(quaternion, vec);
-	return (exports.quaternion_multiplication(first_product, quaternion_inverse)).map(elem => elem.toFixed(6)).splice(1);
+	return (exports.quaternion_multiplication(first_product, quaternion_inverse)).map(elem => elem.toFixed(5)).splice(1);
 };
 
 module.exports = exports;
