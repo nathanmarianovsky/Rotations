@@ -1,0 +1,6 @@
+Angle of Rotation (Enter any value inside the domain [0,360]):
+90
+Axis of Rotation (Any axis is valid, even a non-normalized one):
+[0,0,1]
+Vector to Rotate (Any vector is allowed):
+[1,0,0]

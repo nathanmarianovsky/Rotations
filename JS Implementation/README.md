@@ -16,7 +16,7 @@ npm install
 This will handle the installation of all node_modules.
 
 # Running Code
-Inside of app.js change the parameters as you see fit and inside a command prompt simply run:
+Inside of index.js change the parameters as you see fit and inside a command prompt simply run:
 ```js
-node app.js
+node index.js
 ```
