@@ -29,7 +29,7 @@ exports.matrix_creation = (axis_arr, angle) => {
 // Performs the matrix rotation mapping which returns the rotated vector
 exports.mapping = (alpha, axis, vector) => { 
 	var matrix = exports.matrix_creation(axis, alpha);
-	return math.multiply(matrix, vector).map(elem => elem.toFixed(6)); 
+	return math.multiply(matrix, vector).map(elem => elem.toFixed(5)); 
 };
 
 module.exports = exports;

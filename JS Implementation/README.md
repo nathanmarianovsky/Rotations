@@ -32,5 +32,9 @@ The output will always be up to 5 decimal places.
 
 Inside of index.js change the parameters as you see fit and inside a command prompt simply run:
 ```js
-node index.js
+node index.js -param
 ```
+For the parameter you have the following options:
+- If one is not given then both methods are used.
+- If param = q then only the method of quaternions is used.
+- If param = m then only the method of rotation matrices is used.
