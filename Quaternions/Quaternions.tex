@@ -9,6 +9,8 @@
 \usepackage[makeroom]{cancel}
 \usepackage{polynom}
 \usepackage{booktabs}
+\usepackage{mathtools}
+\usepackage{stmaryrd}
 
 \title{Rotations \& Quaternions}
 \author{Nathan Marianovsky}
@@ -685,14 +687,25 @@ i & 0
 \end{equation*}
 where:
 \begin{equation*}
-\sigma_1^2 = \sigma_2^2 = \sigma_3^2 = i\sigma_1\sigma_2\sigma_3 = \begin{pmatrix}
+\sigma_1^2 = \sigma_2^2 = \sigma_3^2 = -i\sigma_1\sigma_2\sigma_3 = \begin{pmatrix}
 1 & 0 \\
 0 & 1
 \end{pmatrix} = I
 \end{equation*}
-Now since we are talking about $2 \times 2$ matrices with imaginary complex components there is a natural association between the Pauli matrices and quaternions. Specifically we have the map:
+Since we are talking about $2 \times 2$ matrices with complex components satisfying certain relations there is a natural association between the Pauli matrices and quaternions. Specifically consider the map $f: \mathbb{H} \rightarrow \mathfrak{S}$ given by:
 \begin{equation*}
-(1, i, j, k) \rightarrow (I, -i\sigma_1, -i\sigma_2, -i\sigma_3)
+f(q_0 + q_1i + q_2j + q_3k) = \begin{pmatrix}
+q_0 + q_1i & q_2 + q_3i \\
+-q_2 + q_3i & q_0 - q_1i
+\end{pmatrix}
+\end{equation*}
+where:
+\begin{equation*}
+\mathbb{H} = \{ p_0 + p_1i + p_2j + p_3k \hspace{.1cm} | \hspace{.1cm} p_0,p_1,p_2,p_3 \in \mathbb{R} \} \hspace{.3cm} \text{and} \hspace{.3cm} \mathfrak{S} = \{ A \in \mathbb{C}^4 \hspace{.1cm} | \hspace{.1cm} A_{11} = A_{22}^* \hspace{.3cm} \text{and} \hspace{.3cm} A_{12} = -A_{21}^* \}
+\end{equation*}
+It turns out that the spin matrices along with the identity provide a basis for $\mathfrak{S}$ allowing us to make the direct connection:
+\begin{equation*}
+\{1, i, j, k\} \xmapsto{f} \{f(1), -if(i), -if(j), -if(k)\} = \{I, \sigma_3, \sigma_2, \sigma_1\}
 \end{equation*}
 \end{definition}
 \end{minipage}}
